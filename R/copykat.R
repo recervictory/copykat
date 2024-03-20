@@ -277,7 +277,7 @@ start_time <- Sys.time()
                   #library(parallelDist)
 
                    if(distance=="euclidean"){
-                          jpeg(paste(sample.name,"heatmap.jpeg",sep=""), height=h*250, width=4000, res=100)
+                          pdf(paste(sample.name,"heatmap.pdf",sep=""), height=h*2.5, width=40)
                           heatmap.3(t(mat.adj),dendrogram="r", distfun = function(x) parallelDist::parDist(x,threads =n.cores, method = distance), hclustfun = function(x) hclust(x, method="ward.D"),
                           ColSideColors=chr1,Colv=NA, Rowv=TRUE,
                           notecol="black",col=my_palette,breaks=col_breaks, key=TRUE,
@@ -306,7 +306,7 @@ start_time <- Sys.time()
                          #end of ploting gene by cell matrix
 
                 } else {
-                          jpeg(paste(sample.name,"heatmap.jpeg",sep=""), height=h*250, width=4000, res=100)
+                          pdf(paste(sample.name,"heatmap.pdf",sep=""), height=h*2.5, width=40)
                           heatmap.3(t(mat.adj),dendrogram="r", distfun = function(x) as.dist(1-cor(t(x), method = distance)), hclustfun = function(x) hclust(x, method="ward.D"),
                           ColSideColors=chr1,Colv=NA, Rowv=TRUE,
                           notecol="black",col=my_palette,breaks=col_breaks, key=TRUE,
@@ -462,7 +462,7 @@ start_time <- Sys.time()
   col_breaks = c(seq(-1,-0.4,length=50),seq(-0.4,-0.2,length=150),seq(-0.2,0.2,length=600),seq(0.2,0.4,length=150),seq(0.4, 1,length=50))
 
   if(distance=="euclidean"){
-  jpeg(paste(sample.name,"heatmap.jpeg",sep=""), height=h*250, width=4000, res=100)
+  pdf(paste(sample.name,"heatmap.pdf",sep=""), height=h*2.5, width=40)
    heatmap.3(t(mat.adj),dendrogram="r", distfun = function(x) parallelDist::parDist(x,threads =n.cores, method = distance), hclustfun = function(x) hclust(x, method="ward.D"),
             ColSideColors=chr1,RowSideColors=cells,Colv=NA, Rowv=TRUE,
             notecol="black",col=my_palette,breaks=col_breaks, key=TRUE,
@@ -496,7 +496,7 @@ start_time <- Sys.time()
 
 
   } else {
-    jpeg(paste(sample.name,"heatmap.jpeg",sep=""), height=h*250, width=4000, res=100)
+    pdf(paste(sample.name,"heatmap.pdf",sep=""), height=h*2.5, width=40)
     heatmap.3(t(mat.adj),dendrogram="r", distfun = function(x) as.dist(1-cor(t(x), method = distance)), hclustfun = function(x) hclust(x, method="ward.D"),
                  ColSideColors=chr1,RowSideColors=cells,Colv=NA, Rowv=TRUE,
               notecol="black",col=my_palette,breaks=col_breaks, key=TRUE,
